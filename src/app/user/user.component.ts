@@ -11,14 +11,14 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 export class UserComponent {
   selectedUser = signal(DUMMY_USERS[randomIndex]);
 
-  imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
+  imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar); //koristi se samo da izracuna vrednost signala sa nekom drugom vrednosti.
 
   // get imagePath() {
-  //   return 'assets/users/' + this.selectedUser.avatar;
+  //   return 'assets/users/' + this.selectedUser.avatar; //geter se koristi da omoguci pristup vrednostima objekta u kontrolisanoj formi.
   // }
 
   onSelectUser() {
     const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectedUser.set(DUMMY_USERS[randomIndex]);
+    this.selectedUser.set(DUMMY_USERS[randomIndex]); //set postavlja/menja vrednost koja je postavljena u signalu
   }
 }
