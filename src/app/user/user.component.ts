@@ -1,7 +1,5 @@
-import { Component, computed, signal } from '@angular/core';
-import { DUMMY_USERS } from '../dummy-users';
+import { Component, Input } from '@angular/core';
 
-const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 @Component({
   selector: 'app-user',
   imports: [],
@@ -9,16 +7,12 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  selectedUser = signal(DUMMY_USERS[randomIndex]);
+  @Input() avatar!: string;
+  @Input() name!: string;
 
-  imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar); //koristi se samo da izracuna vrednost signala sa nekom drugom vrednosti.
-
-  // get imagePath() {
-  //   return 'assets/users/' + this.selectedUser.avatar; //geter se koristi da omoguci pristup vrednostima objekta u kontrolisanoj formi.
-  // }
-
-  onSelectUser() {
-    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    this.selectedUser.set(DUMMY_USERS[randomIndex]); //set postavlja/menja vrednost koja je postavljena u signalu
+  get imagePath() {
+    return 'assets/users/' + this.avatar;
   }
+
+  onSelectUser() {}
 }
