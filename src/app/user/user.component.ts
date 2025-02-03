@@ -4,6 +4,7 @@ import {
   Input,
   input,
   Output,
+  output,
   EventEmitter,
 } from '@angular/core';
 
@@ -19,6 +20,7 @@ export class UserComponent {
   @Input({ required: true }) name!: string;
   @Output() select = new EventEmitter();
 
+  // select = output<string>();
   // name = input.required<string>();
   // avatar = input.required<string>();
 
