@@ -36,6 +36,6 @@
     </li>
   </ul>
   <div>
-    <app-task [name]="selectedUser.name" />
+    <app-task [name]="selectedUser ? selectedUser.name : ''" />
   </div>
 </main>

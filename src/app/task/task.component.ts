@@ -1,4 +1,4 @@
-import { Component, Input, output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -7,8 +7,9 @@ import { Component, Input, output } from '@angular/core';
   styleUrl: './task.component.css',
 })
 export class TaskComponent {
-  @Input({ required: true }) name!: string;
-  click = output<string>();
+  @Input() name: string | undefined;
+  @Output() click = new EventEmitter();
+  // click = output<string>();
 
   onClick() {
     return this.click.emit(this.name);
