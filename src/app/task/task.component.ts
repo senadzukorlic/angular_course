@@ -8,10 +8,4 @@ import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 })
 export class TaskComponent {
   @Input() name: string | undefined;
-  @Output() click = new EventEmitter();
-  // click = output<string>();
-
-  onClick() {
-    return this.click.emit(this.name);
-  }
 }
