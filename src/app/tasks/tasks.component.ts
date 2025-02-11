@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 import { TaskComponent } from './task/task.component';
-import { AddTaskComponent } from './add-task/add-task.component';
+import { NewTaskComponent } from './new-task/new-task.component';
 @Component({
   selector: 'app-tasks',
-  imports: [TaskComponent, AddTaskComponent],
+  imports: [TaskComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
@@ -11,6 +11,7 @@ export class TasksComponent {
   @Input({ required: true }) userId!: string;
   @Input({ required: true }) name!: string;
   isAddingTask = false;
+
   tasks = [
     {
       id: 't1',

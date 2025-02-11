@@ -1,13 +1,4 @@
-import {
-  Component,
-  computed,
-  Input,
-  input,
-  Output,
-  output,
-  EventEmitter,
-} from '@angular/core';
-
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { User } from './user.model';
 
 @Component({
@@ -21,19 +12,12 @@ export class UserComponent {
   @Input({ required: true }) selected!: boolean;
   @Output() select = new EventEmitter<string>();
 
-  // select = output<string>();
-  // name = input.required<string>();
-  // avatar = input.required<string>();
-
   get imagePath() {
     return 'assets/users/' + this.user.avatar;
   }
 
-  // get imagePath() {
-  //   return 'assets/users/' + this.avatar;
-  // }
-
   onSelectUser() {
+    //funkcija koja prenosi glavoj komponmenti koji je user selektovan(na kojeg usera je kliknuto)
     this.select.emit(this.user.id);
   }
 }
