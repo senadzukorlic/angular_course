@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { NewTaskData } from './task/task.model';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { TasksService } from './tasks.service';
 @Component({
   selector: 'app-tasks',
   imports: [TaskComponent, NewTaskComponent],
@@ -13,12 +14,14 @@ export class TasksComponent {
   @Input({ required: true }) name!: string;
   isAddingTask = false;
 
+  constructor(private tasksService: TasksService) {}
+
   get selectedUserTasks() {
-    return this.tasks.filter((task) => task.userId === this.userId);
+    return this.tasksService.getUserTasks(this.userId);
   }
 
   onCompleteTasks(id: string) {
-    this.tasks = this.tasks.filter((task) => task.id !== id);
+    // this.tasks = this.tasks.filter((task) => task.id !== id);
   }
 
   onStartAddTask() {
@@ -30,13 +33,13 @@ export class TasksComponent {
   }
 
   onAddTask(taskData: NewTaskData) {
-    this.tasks.push({
-      id: new Date().getTime().toString(),
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.date,
-      userId: this.userId,
-    });
+    // this.tasks.push({
+    //   id: new Date().getTime().toString(),
+    //   title: taskData.title,
+    //   summary: taskData.summary,
+    //   dueDate: taskData.date,
+    //   userId: this.userId,
+    // });
     this.isAddingTask = false;
   }
 }
